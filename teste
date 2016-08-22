@@ -1,0 +1,98 @@
+
+
+<?php
+//esse e o index
+require 'coneccao.php';
+$dados=array();
+$cadastrar = mysqli_query($conect,"SELECT * FROM controle_financeiro.despesas  ");
+
+if ($cadastrar){
+
+
+    foreach ($cadastrar  as $descricao => $value){
+        echo "descricao : ".$descricao['descricao']."<tr/>"."valor".$value['valor']."<br/><hr/>";
+
+        //echo "valor".$value['valor']."<br/><hr/>";
+    }
+
+//print_r($descricao);
+
+}else{
+    echo "erro".mysqli_error($conect);
+    echo "erro".mysqli_error($conect);
+
+}
+
+
+
+
+
+foreach ($conect  as $descricao ){
+    echo "descricao : ".$descricao['descricao'];
+
+   // echo "valor".$value['valor']."<br/><hr/>";
+}
+
+
+
+?>
+
+
+
+esse  e o cadastro 
+<?php
+require "coneccao.php";
+$descricao=$_POST['descricao'];
+$valor=$_POST['valor'];
+
+
+$cadastrar = mysqli_query($conect,"INSERT INTO controle_financeiro.despesas(`descricao`,`valor`) VALUES ('".$descricao."','".$valor."')  ");
+
+if ($cadastrar){
+    echo "cliente cadastrado com sussesso!";
+}else{
+    echo "erro".mysqli_error($conect);
+    echo "erro".mysqli_error($conect);
+
+}
+
+
+
+
+?>esse e o deconeccao
+<?php
+
+$host="localhost";
+$user="root";
+$pass="";
+$db="controle_financeiro";
+
+$conect= mysqli_connect($host,$user,$pass,$db);
+if (!$conect){
+    echo "nao foi possivel conectar".mysqli_connect_error().PHP_EQL;
+
+
+
+
+
+
+}
+if (!(mysqli_set_charset($conect,"utf8"))){
+    echo "Erro utf8".mysqli_connect_error($conect);
+    exit();
+}
+
+
+
+?>
+
+
+agora olha o resultado    que aparece na tela
+
+descricao : valor100
+descricao : valor3232
+descricao : valor3232
+descricao : valor9
+descricao : valor70
+descricao : descricao : descricao : descricao : descricao : descricao : descricao : descricao : descricao : descricao : descricao : descricao : descricao : descricao : descricao : descricao : descricao : descricao : descricao :
+
